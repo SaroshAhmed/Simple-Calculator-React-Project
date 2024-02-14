@@ -13,53 +13,26 @@ export default function Calculator() {
             else{
                 return 0
             }
-      
+            
         }
-    
+       
     const handlleSum = ()=>{
-        let tempVal
-        let disSum
-        let fixedSum
-        for(let a=0; a<screenNumbers.length;a++){
-            switch(screenNumbers[a]){
-                case 'x':
-                    tempVal = screenNumbers.join('').split('x')
-                    disSum = parseInt(tempVal[0])*parseInt(tempVal[1])
-                    setScreenNumbers(disSum)
-                    break;
-                case '+':
-                    tempVal = screenNumbers.join('').split('+')
-                    disSum = parseInt(tempVal[0])+parseInt(tempVal[1])
-                    setScreenNumbers(disSum)
-                    break;
-                case '-':
-                    tempVal = screenNumbers.join('').split('-')
-                    disSum = parseInt(tempVal[0])-parseInt(tempVal[1])
-                    setScreenNumbers(disSum)
-                    break;
-                case '/':
-                    tempVal = screenNumbers.join('').split('/')
-                    disSum = parseInt(tempVal[0])/parseInt(tempVal[1])
-                    fixedSum = disSum.toFixed(4)
-                    setScreenNumbers(fixedSum)
-                    break;
-                    case '%':
-                    tempVal = screenNumbers.join('').split('%')
-                    disSum = parseInt(tempVal[0])%parseInt(tempVal[1])
-                    fixedSum = disSum.toFixed(4)
-                    setScreenNumbers(fixedSum)
-                    break;
-            }
-        }
+        let convertToString
+        let totalSum
+        let removeDecimals
+        convertToString= screenNumbers.join('')
+        // eslint-disable-next-line
+        totalSum= eval(convertToString)
+        removeDecimals = parseFloat(totalSum.toFixed(4))
+        setScreenNumbers(removeDecimals)
     }
-
     const handleClear=()=>{
         setScreenNumbers([])
     }
-        
   return (
     <>
     <div className='container'>
+    {/* eslint-disable-next-line */}
     <h1 > <img src={img} className='img'></img>CALCULATOR</h1>
     <p className='screen'>{screenNumbers}</p>
     <p className='credit'>Made by Sarosh</p>
@@ -69,7 +42,7 @@ export default function Calculator() {
     onClick={handleNumbers}>2</button>
     <button className='numButtons' value='3'
     onClick={handleNumbers}>3</button>
-    <button className='symButtons' value='x'
+    <button className='symButtons' value='*'
     onClick={handleNumbers}>x</button>
     <br></br><button className='numButtons' value='4'
     onClick={handleNumbers}>4</button>
